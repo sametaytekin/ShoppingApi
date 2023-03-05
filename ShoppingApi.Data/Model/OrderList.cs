@@ -23,5 +23,9 @@ namespace ShoppingApi.Data.Model
         public ICollection<Product> Products { get; set; }
 
         public string? Note { get; set; }
+
+        public User User { get; set; }
+
+        public int UserId { get; set; }
     }
 }
