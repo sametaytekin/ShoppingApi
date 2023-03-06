@@ -1,4 +1,4 @@
-﻿using ShoppingApi.Base.Model;
+﻿using ShoppingApi.Base.BaseDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShoppingApi.Dto.DTOs
 {
-    public class ProductDto:BaseModel
+    public class ProductDto:BaseDto
     {
         public int Quantity { get; set; }
 
@@ -15,6 +15,5 @@ namespace ShoppingApi.Dto.DTOs
 
         public string? Description { get; set; }
 
-        public int OrderListId { get; set; }
     }
 }

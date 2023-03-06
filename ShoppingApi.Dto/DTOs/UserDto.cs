@@ -1,4 +1,4 @@
-﻿using ShoppingApi.Base.Model;
+﻿using ShoppingApi.Base.BaseDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShoppingApi.Dto.DTOs
 {
-    public class UserDto:BaseModel
+    public class UserDto:BaseDto
     {
         public string? Surname { get; set; }
         public string? Email { get; set; }

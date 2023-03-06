@@ -1,4 +1,4 @@
-﻿using ShoppingApi.Base.Model;
+﻿using ShoppingApi.Base.BaseDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShoppingApi.Dto.DTOs
 {
-    public class OrderListDto:BaseModel
+    public class OrderListDto:BaseDto
     {
         public string? Note { get; set; }
 

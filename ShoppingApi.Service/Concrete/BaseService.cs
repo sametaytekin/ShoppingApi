@@ -25,9 +25,15 @@ namespace ShoppingApi.Service.Concrete
             this.genericRepository = genericRepository;
         }
 
-        public async Task Delete(int id)
+        public async virtual Task Delete(int id)
         {
+            if (id < 0)
+            {
+                throw new InvalidOperationException("Id should be greater than 0(zero)");
+            }
+            
             var tempEntity= await genericRepository.GetByIdAsync(id);
+            
             if(tempEntity == null)
             {
                 throw new InvalidOperationException("Not Found");
@@ -69,7 +75,13 @@ namespace ShoppingApi.Service.Concrete
 
         public async Task Update(int id, Dto updateModel)
         {
+            if (id < 0)
+            {
+                throw new InvalidOperationException("Id should be greater than 0(zero)");
+            }
+            
             var tempEntity = await genericRepository.GetByIdAsync(id);
+            
             if(tempEntity == null)
             {
                 throw new InvalidOperationException("Not Found");
