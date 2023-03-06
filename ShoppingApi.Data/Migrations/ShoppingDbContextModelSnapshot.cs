@@ -34,11 +34,10 @@ namespace ShoppingApi.Data.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Type")
-                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("isActive")
-                        .HasColumnType("integer");
+                    b.Property<bool>("isActive")
+                        .HasColumnType("boolean");
 
                     b.HasKey("Id");
 

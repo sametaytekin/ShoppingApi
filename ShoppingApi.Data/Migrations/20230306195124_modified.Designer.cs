@@ -12,8 +12,8 @@ using ShoppingApi.Data.Context;
 namespace ShoppingApi.Data.Migrations
 {
     [DbContext(typeof(ShoppingDbContext))]
-    [Migration("20230305115252_test1")]
-    partial class test1
+    [Migration("20230306195124_modified")]
+    partial class modified
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,11 +37,10 @@ namespace ShoppingApi.Data.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Type")
-                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("isActive")
-                        .HasColumnType("integer");
+                    b.Property<bool>("isActive")
+                        .HasColumnType("boolean");
 
                     b.HasKey("Id");
 
@@ -74,9 +73,14 @@ namespace ShoppingApi.Data.Migrations
                     b.Property<string>("Note")
                         .HasColumnType("text");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Orderlist");
                 });
@@ -116,6 +120,40 @@ namespace ShoppingApi.Data.Migrations
                     b.ToTable("Product");
                 });
 
+            modelBuilder.Entity("ShoppingApi.Data.Model.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("text");
+
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("text");
+
+                    b.Property<string>("RefreshTokenExpire")
+                        .HasColumnType("text");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Surname")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("User");
+                });
+
             modelBuilder.Entity("ShoppingApi.Data.Model.OrderList", b =>
                 {
                     b.HasOne("ShoppingApi.Data.Model.Category", "Category")
@@ -124,7 +162,15 @@ namespace ShoppingApi.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("ShoppingApi.Data.Model.User", "User")
+                        .WithMany("OrderList")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Category");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ShoppingApi.Data.Model.Product", b =>
@@ -149,6 +195,11 @@ namespace ShoppingApi.Data.Migrations
             modelBuilder.Entity("ShoppingApi.Data.Model.OrderList", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("ShoppingApi.Data.Model.User", b =>
+                {
+                    b.Navigation("OrderList");
                 });
 #pragma warning restore 612, 618
         }

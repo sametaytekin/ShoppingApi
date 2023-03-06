@@ -11,6 +11,6 @@ namespace ShoppingApi.Data.Model
     {
         public string? Type { get; set; }
 
-        public int isActive { get; set; }
+        public bool isActive { get; set; }
     }
 }

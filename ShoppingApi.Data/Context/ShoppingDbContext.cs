@@ -15,6 +15,11 @@ namespace ShoppingApi.Data.Context
         public DbSet<Product> Product { get; set; }
         public DbSet<Category> Category { get; set; }
         public DbSet<OrderList> Orderlist { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Category>().HasQueryFilter(category => category.isActive);
+        }
     }
 }
     
