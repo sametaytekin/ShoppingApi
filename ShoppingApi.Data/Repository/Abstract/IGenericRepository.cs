@@ -13,7 +13,7 @@ namespace ShoppingApi.Data.Abstract
         //Get
         Task<IEnumerable<TEntity>> GetAll();
         //GetById
-        Task<TEntity> GetById(int id);
+        Task<TEntity> GetByIdAsync(int id);
         //Create
         Task Create(TEntity entity);
         //Update

@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Validation\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ShoppingApi.Base\ShoppingApi.Base.csproj" />
+    <ProjectReference Include="..\ShoppingApi.Data\ShoppingApi.Data.csproj" />
+    <ProjectReference Include="..\ShoppingApi.Dto\ShoppingApi.Dto.csproj" />
+  </ItemGroup>
+
 </Project>

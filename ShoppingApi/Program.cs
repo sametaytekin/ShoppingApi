@@ -7,6 +7,7 @@ using ShoppingApi.Middleware;
 using ShoppingApi.Data;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,10 @@ builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
 
 builder.Services.AddDbContext<ShoppingDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSqlConnection")));
+
+var ContainerBuilder = new ContainerBuilder();
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
 
 //builder.Host.UseSerilog();
 Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(builder.Configuration).CreateLogger();

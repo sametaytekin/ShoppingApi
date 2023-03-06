@@ -3,6 +3,7 @@ using ShoppingApi.Data.Abstract;
 using ShoppingApi.Data.Context;
 using ShoppingApi.Data.Model;
 using ShoppingApi.Data.Repository.Concrete;
+using ShoppingApi.Data.UnitOfWork.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,6 +51,7 @@ namespace ShoppingApi.Data.UnitOfWork.Concrete
 
         public void Dispose()
         {
+            dbContext.Dispose();
 
         }
     }

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Serilog;
 using System.Net;
 
 namespace ShoppingApi.Middleware
@@ -31,11 +32,13 @@ namespace ShoppingApi.Middleware
             context.Response.StatusCode=(int)HttpStatusCode.InternalServerError;
             context.Response.ContentType="application/json";
 
-            string message = $"Error {context.Request.Method}  {context.Response.StatusCode} Error message{ex.Message} ";
+            string message = $"Error {context.Request.Method} {context.Response.StatusCode} Error message {ex.Message} ";
+            Console.WriteLine(message);
+            Log.Error(message);
 
-            JsonConvert.SerializeObject(new { error = ex.Message }, Formatting.None);
+            var result = JsonConvert.SerializeObject(new { error = ex.Message }, Formatting.None);
             
-            return context.Response.WriteAsync(message);    
+            return context.Response.WriteAsync(result);    
         }
 
 

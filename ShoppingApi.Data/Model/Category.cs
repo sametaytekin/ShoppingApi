@@ -9,7 +9,7 @@ namespace ShoppingApi.Data.Model
 {
     public class Category:BaseModel
     {
-        public string Type { get; set; }
+        public string? Type { get; set; }
 
         public int isActive { get; set; }
     }

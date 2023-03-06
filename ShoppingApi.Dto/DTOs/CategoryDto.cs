@@ -13,6 +13,5 @@ namespace ShoppingApi.Dto.DTOs
         [Required]
         public string? Type { get; set; }
 
-        public int isActive { get; set; }
     }
 }

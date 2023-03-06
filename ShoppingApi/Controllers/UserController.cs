@@ -6,9 +6,6 @@ namespace ShoppingApi.Controllers
     [Route("[controller]s")]
     public class UserController : ControllerBase
     {
-        public IActionResult Index()
-        {
-            return Ok();
-        }
+
     }
 }

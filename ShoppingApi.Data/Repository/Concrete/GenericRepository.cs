@@ -37,7 +37,7 @@ namespace ShoppingApi.Data.Repository.Concrete
             return await entities.ToListAsync();
         }
 
-        public async Task<TEntity> GetById(int id)
+        public async Task<TEntity> GetByIdAsync(int id)
         {
             return await entities.FindAsync(id);
         }

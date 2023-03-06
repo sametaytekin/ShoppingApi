@@ -6,9 +6,6 @@ namespace ShoppingApi.Controllers
     [Route("[controller]s")]
     public class OrderListController : ControllerBase
     {
-        public IActionResult Index()
-        {
-            return Ok();
-        }
+
     }
 }

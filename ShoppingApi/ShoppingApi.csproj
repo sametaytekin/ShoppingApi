@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Contrib.Autofac.DependencyInjection" Version="7.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -18,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ShoppingApi.Base\ShoppingApi.Base.csproj" />
     <ProjectReference Include="..\ShoppingApi.Data\ShoppingApi.Data.csproj" />
+    <ProjectReference Include="..\ShoppingApi.Service\ShoppingApi.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>
